@@ -1,0 +1,25 @@
+html{
+    background-color: aliceblue;
+}
+.top{
+    text-align: center;
+}
+body{
+    display: grid;
+    grid-template-rows: 1fr 4fr;
+}
+.gameboard{
+
+    display: grid;
+    grid-template-columns: 150px 150px 150px;
+    gap: 10px;
+    background-color: aliceblue;
+    justify-content: center;
+    
+}
+.square{
+     background-color: white;
+    width: 150px;
+    height: 150px;
+   
+}
