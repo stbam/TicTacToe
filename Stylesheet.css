@@ -21,5 +21,62 @@ body{
      background-color: white;
     width: 150px;
     height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    user-select: none;
    
+}
+.square:hover{
+    background-color: rgb(162, 201, 234);
+}
+.display{
+     display: grid;
+     justify-content: center;
+}
+.innerdisplay{
+    display: grid;
+    justify-content: center;
+}
+.difficulty{
+    padding:5px ;
+
+}
+.Player{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+
+}
+.minimenu{
+    display: flex;
+    flex-direction: row;
+}
+.player{
+    display: flex; 
+    align-items: center;
+    justify-content: space-between;
+    user-select: none; /* removes select of letters may be best used as css variable for X and O as well */ 
+    border-style: solid ;
+    border-color: gray; /* gainsboro */ /*looks good color */
+    
+    margin: 5px;
+   
+    padding: 5px;
+
+   
+    border-radius: 5px;
+    background-color: white;
+    width: 150px;
+    height: 30px;
+
+}
+.user-select{
+    margin-left: 10px;
+}
+.wins{
+    font-size: 30px;
+    margin-right: 10px;
 }
