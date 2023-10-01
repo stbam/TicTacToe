@@ -1,3 +1,4 @@
+
 const Gameboard = (() => {
     let gameboard = ['', '', '', '', '', '', '', '', '']; //['0', '0', '0', '0', '0', '0', '0', '0', '0'];
   const x=  document.querySelectorAll('.square');  
@@ -38,21 +39,69 @@ const displayController= (()=>{
                 //  console.log(Gameboard.getGameboard()[index]);       
               }
               else{
-               // console.log("spot isnt taken");
-                if(turn%2==1){
-                    player1(index);
-                    turn++;
-                    console.log(turn);
-                }
-                else{
-                    player2(index);
-                    turn++;
-                    console.log(turn);
-                }  
-              }        
+                // console.log("spot isnt taken");
+                 if(turn%2==1){
+                     player1(index);
+                     turn++;
+                //     console.log(turn);
+                     gameOver();
+                 }
+                 else{
+                     player2(index);
+                     turn++;
+               //      console.log(turn);
+                     gameOver();
+                 }  
+              /*   player2(index);
+                 gameOver();*/
+               }         
           })
     });
 })();
+
+const gameOver=(()=>{
+   
+    let counterX=0;
+let counterY=0;
+
+        const x = Gameboard.getGameboard();
+       
+      
+        for (let i = 0; i < 3; i++) {
+            if (x[i] === 'X' && x[i + 3] === 'X' && x[i + 6] === 'X' ) {
+                counterX++;
+            }
+           else if(x[i] === 'O' && x[i + 3] === 'O' && x[i + 6] === 'O' ){
+                counterY++;
+            }
+        }
+         
+        for (let i = 0; i < 9; i += 3) {
+            if (x[i] === 'X' && x[i + 1] === 'X' && x[i + 2] === 'X') {
+                counterX++;
+            }
+            else if(x[i] === 'O' && x[i + 1] === 'O' && x[i + 2] === 'O'){
+                counterY++;
+            }
+        }
+      //  console.log(counterX)
+         
+        if (x[0] === 'X' && x[4] === 'X' && x[8] === 'X') {
+            counterX++;
+        }
+        else if (x[0] === 'O' && x[4] === 'O' && x[8] === 'O'){
+            counterY++;
+        }
+
+        if (counterX === 1) {
+            alert("Player X wins!");
+           // reset()
+        } 
+        else if(counterY===1){
+            alert("Player Y wins!")
+        } 
+
+});
 
 const player1=(index)=>{
     let gameboard = Gameboard.getGameboard();
@@ -71,5 +120,6 @@ const updateDisplay=()=>{
     const x = Gameboard.getSquares();
     x.forEach((element,index)=>{
         element.innerHTML=Gameboard.getGameboard()[index];
+
     })
 }
