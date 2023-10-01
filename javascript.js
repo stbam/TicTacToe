@@ -8,25 +8,46 @@ const Gameboard = (() => {
     });
   //  console.log(x[8].innerHTML)
   
-    
+  let playerXscore=0;
+  let playerOscore=0;
 
+   
 
     // Return an object with a method to get the gameboard
     return {
-     
+        setPlayerXscore:function(score){
+            playerXscore=score;
+      },
+        setPlayerOscore:function(score){
+              playerOscore=score;
+        },
         getGameboard: function () {
             return gameboard;
         },
         getSquares:function(){
             return x;
+        },
+        getPlayerXscore:function(){
+            return playerXscore;
+        },
+        getPlayerOscore:function(){
+            return playerOscore;
         }
+
 
     };
 })();
 
 const displayController= (()=>{
-    let playerone=1;
-    let playertwo=0;
+
+    let button_reset=document.getElementById("reset");
+    button_reset.onclick=()=>{
+        reset();
+        alert("resetted");
+    }
+
+
+
     let turn=0;
 
     const x =Gameboard.getSquares();
@@ -63,7 +84,7 @@ const gameOver=(()=>{
    
     let counterX=0;
 let counterY=0;
-
+let playerwinner;
         const x = Gameboard.getGameboard();
        
       
@@ -94,31 +115,60 @@ let counterY=0;
         }
         
         if (counterX === 1) {
+            playerwinner ='X';
             reset();
+            winner(playerwinner);
             alert("Player X wins!");
 
             
         } 
         else if(counterY===1){
+            playerwinner='O';
             reset();
+            winner(playerwinner);
             alert("Player Y wins!")
             
         } 
 
 });
 
+const winner=(playerwinner)=>{
+    if(playerwinner=='X'){
+        let score=Gameboard.getPlayerXscore();
+        alert(score);
+        score++;
+        Gameboard.setPlayerXscore(score);
+        let updateScore=document.getElementById('player-X');
+        updateScore.innerHTML=score;
+
+    }
+    else{
+        let score=Gameboard.getPlayerOscore();
+        score++;
+        Gameboard.setPlayerOscore(score);
+        let updateScore= document.getElementById('player-O')
+        updateScore.innerHTML=score;
+        alert(score);
+    }
+
+    display=document.getElementById('displayWinner');
+    display.innerHTML="Player "+playerwinner;
+}
+
 const reset=()=>{
+
  square = Gameboard.getGameboard();
  for(let i=0;i<9;i++){
     square[i]=' ';
- }
 
+ }
 };
 const player1=(index)=>{
+   
     let gameboard = Gameboard.getGameboard();
     gameboard[index]='X';
     updateDisplay();
-
+    
 };
 
 const player2=(index)=>{
