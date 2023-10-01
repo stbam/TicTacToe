@@ -106,41 +106,40 @@ let playerwinner;
             }
         }
       //  console.log(counterX)
-         
+        if(x[2]==='X'&& x[4]==='X'&& x[6]==='X'){
+            counterX++;
+        }   
+        else if(x[2]==='O'&& x[4]==='O'&& x[6]==='O'){
+            counterY++;
+        }
         if (x[0] === 'X' && x[4] === 'X' && x[8] === 'X') {
             counterX++;
         }
         else if (x[0] === 'O' && x[4] === 'O' && x[8] === 'O'){
             counterY++;
-        }
-        
+        }   
         if (counterX === 1) {
             playerwinner ='X';
             reset();
             winner(playerwinner);
-            alert("Player X wins!");
-
-            
+           // alert("Player X wins!");       
         } 
         else if(counterY===1){
             playerwinner='O';
             reset();
             winner(playerwinner);
-            alert("Player Y wins!")
-            
+           // alert("Player Y wins!")      
         } 
-
 });
 
 const winner=(playerwinner)=>{
     if(playerwinner=='X'){
         let score=Gameboard.getPlayerXscore();
-        alert(score);
+      //  alert(score);
         score++;
         Gameboard.setPlayerXscore(score);
         let updateScore=document.getElementById('player-X');
         updateScore.innerHTML=score;
-
     }
     else{
         let score=Gameboard.getPlayerOscore();
@@ -148,7 +147,7 @@ const winner=(playerwinner)=>{
         Gameboard.setPlayerOscore(score);
         let updateScore= document.getElementById('player-O')
         updateScore.innerHTML=score;
-        alert(score);
+       // alert(score);
     }
 
     display=document.getElementById('displayWinner');
