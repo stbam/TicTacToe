@@ -92,17 +92,28 @@ let counterY=0;
         else if (x[0] === 'O' && x[4] === 'O' && x[8] === 'O'){
             counterY++;
         }
-
+        
         if (counterX === 1) {
+            reset();
             alert("Player X wins!");
-           // reset()
+
+            
         } 
         else if(counterY===1){
+            reset();
             alert("Player Y wins!")
+            
         } 
 
 });
 
+const reset=()=>{
+ square = Gameboard.getGameboard();
+ for(let i=0;i<9;i++){
+    square[i]=' ';
+ }
+
+};
 const player1=(index)=>{
     let gameboard = Gameboard.getGameboard();
     gameboard[index]='X';
